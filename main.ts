@@ -1,6 +1,7 @@
 import { app, BrowserWindow, screen } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+const windowStateKeeper = require('electron-window-state')
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -11,17 +12,27 @@ function createWindow(): BrowserWindow {
   const electronScreen = screen;
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
 
+  // Window state manager
+  let winState = windowStateKeeper({
+    defaultWidth: 1237,
+    defaultHeight:793
+  })
+
   // Create the browser window.
   win = new BrowserWindow({
-    x: 0,
-    y: 0,
-    width: size.width,
-    height: size.height,
+    x: winState.x,
+    y: winState.y,
+    width: winState.width,
+    height: winState.height,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
+      webSecurity: false,
     },
+    frame: false
   });
+
+  winState.manage(win)
 
   if (serve) {
 
@@ -53,6 +64,8 @@ function createWindow(): BrowserWindow {
 }
 
 try {
+
+  app.setAppUserModelId(process.execPath)
 
   app.allowRendererProcessReuse = true;
 

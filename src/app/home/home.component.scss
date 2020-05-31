@@ -1,3 +1,193 @@
-:host {
-  
+body{
+    display: flex;
+    flex-flow: column;
+    -webkit-user-select: none;
+
+    header {
+        background-color: #3a3a3a;
+        display: flex;
+        flex-direction: column;
+
+        .container{
+            display: grid;
+            grid-template-columns: 90% auto;
+            padding: 8px 8px 0 8px;
+        
+            strong{
+                -webkit-app-region: drag; //This allows the window to be dragged
+                color: #fff;
+        
+                span{
+                    color: orange;
+                  }
+              }
+        
+            nav{
+                justify-self: right;
+                margin: 0px 10px 0px 0px;
+                ul{
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+    
+                    li{
+                        float: left;
+                        margin-left: 8px;
+                        
+                        img{
+                            width: 12px;
+                            cursor: pointer;
+                        }
+        
+                        img#min{
+                            padding: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    main{
+        
+        .mod-item{
+            display: grid;
+            grid-template-columns: 90px 25% auto auto;
+            margin: 5px;
+            min-height: 90px;
+            background-color: #363636;
+            border-radius: 20px;
+            color: white;
+            padding: 0px;
+
+            
+            img{
+                max-height: 70px;
+                margin-left: 20px;
+                max-width: auto;
+                align-self: center;
+            }
+            
+            .mod-details{
+                margin: 0px;
+                padding: 0px;
+                align-self: center;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                //width: 500px;
+            }
+
+            .current-version{
+                align-self: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .button-container{
+                margin: 10px;
+                display: flex;
+                align-self: center;
+                justify-self: end;
+
+                button{
+                    margin: 5px;
+                    height: 30px;
+                    border-radius: 20px;
+                    border: none;
+                    cursor: pointer;
+                    max-width: 140px;
+                    min-width: 140px;
+                    background-color: #FFA200;
+                }
+                // grid-template-columns: repeat(3, 140px);
+                //margin: 0px 10px 0px 0px;
+            }
+        }
+
+        #mod-icon{
+            width: 70px;
+        }
+    }
+
+    .searchbox-container{
+        display:flex;
+        flex-flow: column;
+
+        input{
+            flex-grow: 1;
+            background-color: #535353;
+            border:none;
+            min-width:0;
+            margin: 5px 10px;
+            border-radius: 50px;
+            border: 0;
+            padding: 12px;
+            color: gray;
+            font-family: 'Montserrat';
+            outline: none;
+        }
+    }
+
+    main{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #707070;
+}
+
+.switch{
+    display: flex;
+    align-self: center;
+}
+
+input[type="checkbox"]{
+    position: relative;
+    width: 40px;
+    height: 20px;
+    appearance: none;
+    background: #c6c6c6;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    // transition: .5s;
+}
+
+input:checked[type="checkbox"]{
+    background: #03a9f4;
+}
+input[type="checkbox"]:before{
+
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    background: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: .5s;
+}
+
+input:checked[type="checkbox"]:before{
+    left: 20px;
 }
