@@ -32,6 +32,9 @@ function createWindow(): BrowserWindow {
     frame: false
   });
 
+  win.webContents.on('did-finish-load', function() {
+    win.webContents.send('ping', 'Finished Loading')});
+
   winState.manage(win)
 
   if (serve) {

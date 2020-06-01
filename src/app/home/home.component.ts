@@ -1,11 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterContentInit, AfterViewInit, ViewEncapsulation  } from '@angular/core';
 import { Router } from '@angular/router';
 import { ElectronService } from '../core/services/electron/electron.service';
 import FileTree from '../Utilities/FileTree.js';
 const fs = require('fs');
-const { dialog } = require('electron')
+const { dialog, ipcRenderer } = require('electron')
+const items = require('./modItems')
 
-
+// ipcRenderer.on('ping', function(event, message) {
+//   console.log(message);  // Prints "whoooooooh!"
+//   getMods();
+//   showNotification();
+// });
 
 
 const options = {
@@ -25,20 +30,11 @@ const options = {
   styleUrls: ['./home.component.scss']
 })
 
-export class HomeComponent implements OnInit {
-  installedMods: any;
-
-
-  constructor(private router: Router, private electron: ElectronService) { }
+export class HomeComponent implements AfterViewInit{
+  @ViewChild('items') itemsElementRef: ElementRef;
   
-  ngOnInit(): void { 
-    // const btnclick = document.getElementById('notification-button');
-    // btnclick.addEventListener('click', () => {
-    //   this.getMods();
-    //   this.showNotification();
-    // });
+  ngAfterViewInit(){
     let search = document.getElementById('search')
-
     search.addEventListener('keyup', e=>{
 
       Array.from(document.getElementsByClassName('mod-item')).forEach(modItem => {
@@ -49,10 +45,15 @@ export class HomeComponent implements OnInit {
 
       })
     })
+
     this.getMods();
     this.showNotification();
   }
 
+  installedMods: any;
+
+  constructor(private router: Router, private electron: ElectronService) { }
+  
   closeWindow()
   {
     this.electron.window.close();
@@ -63,7 +64,17 @@ export class HomeComponent implements OnInit {
     this.electron.window.minimize();
   }
 
-  async getMods()
+  showNotification()
+{
+  let myNotification = new Notification('FCS Mod Manager', {
+    body: 'Got Mods'
+  })
+  
+  myNotification.onclick = () => {
+    console.log('Notification clicked')
+  }
+}
+  getMods()
   {
     // console.log("Click");
     this.installedMods = new Array();
@@ -77,9 +88,8 @@ export class HomeComponent implements OnInit {
         if(folder.name.startsWith('FCS') && folder.isDirectory)
         {
           this.installedMods.push(folder);
-          let h = document.getElementById("isEnabled")
-          console.log(h)
           folder.getModData();
+          items.addItem(folder,this.itemsElementRef.nativeElement)
         }
         
         // console.log(fileTree.items[index].path);
@@ -89,16 +99,4 @@ export class HomeComponent implements OnInit {
 
       console.log(fileTree);
   }
-
-  showNotification()
-  {
-    let myNotification = new Notification('FCS Mod Manager', {
-      body: 'Got Mods'
-    })
-    
-    myNotification.onclick = () => {
-      console.log('Notification clicked')
-    }
-  }
-
 }
