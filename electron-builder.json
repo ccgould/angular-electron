@@ -1,5 +1,5 @@
 {
-  "productName": "angular-electron",
+  "productName": "FCStudios Mod Manager",
   "directories": {
     "output": "release/"
   },
@@ -20,7 +20,7 @@
         "!tslint.json"
     ],
   "win": {
-    "icon": "dist/assets/icons",
+    "icon": "dist/assets/icons/favicon.ico",
     "target": [
       "portable"
     ]

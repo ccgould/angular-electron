@@ -1,3 +1,15 @@
+@font-face {
+    font-family: "Flaticon";
+    src: url("../../assets/1828675-basic-ui/font/Flaticon.eot");
+    src: url("../../assets/1828675-basic-ui/font/Flaticon.eot?#iefix") format("embedded-opentype"),
+         url("../../assets/1828675-basic-ui/font/Flaticon.woff2") format("woff2"),
+         url("../../assets/1828675-basic-ui/font/Flaticon.woff") format("woff"),
+         url("../../assets/1828675-basic-ui/font/Flaticon.ttf") format("truetype"),
+         url("../../assets/1828675-basic-ui/font/Flaticon.svg#Flaticon") format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+
 body{
     display: flex;
     flex-flow: column;
@@ -10,40 +22,28 @@ body{
 
         .container{
             display: grid;
-            grid-template-columns: 90% auto;
-            padding: 8px 8px 0 8px;
+            grid-template-columns: 80% auto;
+            padding: 1px 0px 0 8px;
         
             strong{
                 -webkit-app-region: drag; //This allows the window to be dragged
                 color: #fff;
+                padding: 5px 0px 0px 0px;
         
                 span{
                     color: orange;
                   }
               }
-        
-            nav{
-                justify-self: right;
-                margin: 0px 10px 0px 0px;
-                ul{
-                    list-style-type: none;
-                    margin: 0;
-                    padding: 0;
-    
-                    li{
-                        float: left;
-                        margin-left: 8px;
-                        
-                        img{
-                            width: 12px;
-                            cursor: pointer;
-                        }
-        
-                        img#min{
-                            padding: 10px;
-                        }
-                    }
-                }
+              
+            .winbdow-control-container{
+                display: flex;
+                //margin: 0px 10px 0px 0px;
+                padding: 0px;
+                margin: 0px;
+                justify-self: end;
+                // justify-content: space-between;
+                justify-content: right;
+                align-content: stretch;
             }
         }
     }
@@ -55,67 +55,9 @@ body{
         overflow-y: auto;
         overflow-x: auto;
 
-        #items{
-            .mod-item{
-                display: grid;
-                grid-template-columns: 90px 25% auto auto;
-                margin: 5px;
-                min-height: 90px;
-                background-color: #363636;
-                border-radius: 20px;
-                color: white;
-                padding: 0px;
-    
-                
-                img{
-                    max-height: 70px;
-                    margin-left: 20px;
-                    max-width: auto;
-                    align-self: center;
-                }
-                
-                .mod-details{
-                    margin: 0px;
-                    padding: 0px;
-                    align-self: center;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    //width: 500px;
-                }
-    
-                .current-version{
-                    align-self: center;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                }
-    
-                .button-container{
-                    margin: 10px;
-                    display: flex;
-                    align-self: center;
-                    justify-self: end;
-    
-                    button{
-                        margin: 5px;
-                        height: 30px;
-                        border-radius: 20px;
-                        border: none;
-                        cursor: pointer;
-                        max-width: 140px;
-                        min-width: 140px;
-                        background-color: #FFA200;
-                    }
-                    // grid-template-columns: repeat(3, 140px);
-                    //margin: 0px 10px 0px 0px;
-                }
-            }
-    
-            #mod-icon{
-                width: 70px;
-            }
-        }
+        // #items{
+            
+        // }
     }
 
     .searchbox-container{
@@ -189,4 +131,52 @@ body{
 
 :host ::ng-deep input:checked[type="checkbox"]:before{
     left: 20px;
+}
+
+.not-found{
+    position: fixed; /* or absolute */
+    top: 50%;
+    left: 50%;
+    padding: 0px;
+    text-align: center;
+    margin: 0px;
+    margin-top: -50px;
+    margin-left: -100px;
+    font-size: 50px;
+    color: cyan;
+}
+
+.controlBTN{
+    background-color: #3a3a3a;
+    margin: 0px;
+    padding: 8px 15px;
+    font-size: small;
+    cursor: pointer;
+}
+
+.controlBTN:hover{
+    background-color: #5e5e5e;
+}
+
+.controlBTN-close:hover{
+    background-color: red;
+}
+
+.flaticon-059-minus:before { 
+    content: "\f13a"; 
+    color:white;
+    margin-top: 60px;
+    font-family: Flaticon; 
+}
+
+.flaticon-054-maximize:before { 
+    content: "\f135"; 
+    color:white;
+    font-family: Flaticon; 
+}
+
+.flaticon-020-close:before { 
+    content: "\f113"; 
+    color:white;
+    font-family: Flaticon; 
 }

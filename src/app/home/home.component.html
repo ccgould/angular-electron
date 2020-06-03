@@ -1,53 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../assets/1828675-basic-ui/font/flaticon.css">
+    </head>
 <body>
     <header>
         <div class="container">
             <strong><span>FCStudios</span> - MODS MANAGER V1.0.0</strong>
-            <nav>
-                <ul>
-                    <li><img src="../../assets/btn-min.svg" id="min" (click)="minimizeWindow()"></li>
-                    <li><img src="../../assets/btn-close.svg" (click)="closeWindow()"></li>
-                </ul>
-            </nav>
+            <div class="winbdow-control-container">
+                <div class="flaticon-059-minus controlBTN controlBTN-minus" (click)="minimizeWindow()"></div>
+                <div class="flaticon-054-maximize controlBTN" (click)="expandWindow()"></div>
+                <div class="flaticon-020-close controlBTN controlBTN-close" (click)="closeWindow()"></div>
+            </div>
         </div>
     </header>
 
     <div class="searchbox-container">
-        <input id="search" type="text" placeholder="Search for mods ..." (keyup.enter)="channel($event.target.value)">
+        <input id="search" type="text" placeholder="Search for mods ..." [(ngModel)]="search">
     </div>
 
     <main>
-        <div id="items" #items></div>
-        <!-- <ng-container *ngFor="let mod of installedMods">
-            <div class="mod-item">
-                <img id="mod-icon" src="{{ mod.ModIcon }}">
-                
-                <div class="mod-details">
-                    <strong>{{ mod.Friendly }} </strong> <br>
-                    <small>INSTALLED VERSION: V{{mod.Version}}</small>
-                </div>
-
-                <div class="current-version">
-                    <strong>CURRENT VERSION </strong>
-                    <small>v{{mod.Version}}</small>
-                </div>
-
-                <div class="button-container">
-                    <label class="switch">
-                        <input type="checkbox" id="isEnabled">
-                    </label>
-                    <button>NEXUS PAGE</button>
-                    <button>UPDATE</button>
-                </div>
+        <div *ngFor="let mod of (installedMods | filter:search)">
+            <div *ngIf="mod.Friendly">
+                <app-mod-item mod [mod]="mod"></app-mod-item>
             </div>
-        </ng-container> -->
-    </main>
 
-    <script>
-    
-    </script>
+        </div>
+        <div *ngIf="(installedMods| filter:search).length <1">
+            <strong class="not-found">NOT FOUND</strong>
+        </div>
+    </main>
 </body>
 
 </html>

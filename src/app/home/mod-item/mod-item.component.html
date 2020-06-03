@@ -1,0 +1,20 @@
+<div class="mod-item">
+    <img id="mod-icon" src="{{ mod.ModIcon }}">
+    <div class="mod-details">
+        <strong #modItem>{{ mod.Friendly }}</strong> <br>
+        <small>INSTALLED VERSION: {{ mod.Version }}</small>
+    </div>
+    
+    <div class="current-version">
+        <strong>NEXUS VERSION</strong>
+        <small class="nexus-version">{{ mod.NexusVersion }}</small>
+    </div>
+
+    <div class="button-container">
+        <label class="switch">
+            <input type="checkbox" class="item-toggle" id="isEnabled" #itemToggle checked>
+        </label>
+        <button class="nexus-btn" (click)="openNexus()" #nexusBTN [hidden] = "mod.HasUpdate">NEXUS PAGE</button>
+        <button class="update-btn" (click)="openNexus()" #updateBTN [hidden] = "!mod.HasUpdate">UPDATE</button>
+    </div>
+</div>

@@ -1,12 +1,14 @@
 {
-  "name": "angular-electron",
-  "version": "7.1.0",
-  "description": "Angular 9 with Electron (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
+  "name": "fcstudios-mod-manager",
+  "productName": "FCStudios Mod Manager",
+  "version": "1.0.0",
+  "description": "An application that helps with the FCStudios mods for Subnautica and Subnautica Below Zero",
+  "homepage": "https://github.com/ccgould/fcs-mod-manager",
   "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
+    "name": "Field Creators Studios",
+    "email": "fcstudios@yahoo.com"
   },
+  "repository":"https://github.com/ccgould/fcs-mod-manager",
   "keywords": [
     "angular",
     "angular 9",
@@ -95,7 +97,10 @@
   },
   "dependencies": {
     "@fortawesome/angular-fontawesome": "0.6.1",
+    "compare-versions": "3.6.0",
     "electron-window-state": "5.0.3",
+    "node-fetch": "2.6.0",
+    "request": "2.88.2",
     "simplebar": "5.2.0"
   }
 }

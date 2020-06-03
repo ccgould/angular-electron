@@ -24,6 +24,8 @@ function createWindow(): BrowserWindow {
     y: winState.y,
     width: winState.width,
     height: winState.height,
+    minWidth:722,
+    minHeight:180,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
