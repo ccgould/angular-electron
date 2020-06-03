@@ -38,7 +38,6 @@ const options = {
 export class HomeComponent implements AfterViewInit, OnInit{
   @ViewChild('items') itemsElementRef: ElementRef;
   @ViewChild('search') searchref: ElementRef;
-  // @ViewChildren('modItem') strong;
   @ContentChildren('modItem', {descendants: true}) modItemRefs;
   installedMods: [0];
   currentMods: any
@@ -48,22 +47,6 @@ export class HomeComponent implements AfterViewInit, OnInit{
   }
 
   ngAfterViewInit(){
-
-//     //Filter items with "search"
-//     this.searchref.nativeElement.addEventListener('keyup', e=>{
-//       console.log("searching ...")
-//       console.log(this.modItemRefs)
-
-//   //Loop Items
-//   Array.from(this.modItemRefs).forEach(item => {
-     
-//       console.log('ho')
-//       console.log(item)
-//       // //Hide items that dont match search value
-//       // let hasMatch = item.innerText.toLowerCase().includes(search.value)
-//       // item.style.display = hasMatch ? 'flex' : 'none'
-//   })
-// })
     this.getMods();
     this.showNotification();
   }
@@ -117,10 +100,6 @@ export class HomeComponent implements AfterViewInit, OnInit{
           {
             this.installedMods.push(folder);
             folder.getModData(json,this.data);
-            //this.currentMods.append(folder)
-            //let itemNode = document.createElement('app-mod-item');
-            //this.itemsElementRef.nativeElement.appendChild(itemNode)
-            //items.addItem(folder,this.itemsElementRef.nativeElement)
           }
         }
     });
